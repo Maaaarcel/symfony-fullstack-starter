@@ -12,5 +12,5 @@
 phpstan.neon
 .idea
 
-.pnpm-lock.yaml
+pnpm-lock.yaml
 composer.lock
