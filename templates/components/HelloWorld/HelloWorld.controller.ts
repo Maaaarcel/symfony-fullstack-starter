@@ -1,5 +1,6 @@
 import {Controller} from '@hotwired/stimulus';
 
+// @ts-ignore
 import.meta.stimulusIdentifier = 'hello-world';
 
 export default class HelloWorldController extends Controller<HTMLDivElement> {
