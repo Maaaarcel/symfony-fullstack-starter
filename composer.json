@@ -30,7 +30,7 @@
         "symfony/yaml": "8.0.*",
         "tales-from-a-dev/twig-tailwind-extra": "^1.1",
         "twig/extra-bundle": "^3.24",
-        "twig/twig": "^2.12|^3.24"
+        "twig/twig": "^3.24"
     },
     "config": {
         "allow-plugins": {
