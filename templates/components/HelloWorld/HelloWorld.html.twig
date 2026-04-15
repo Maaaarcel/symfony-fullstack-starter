@@ -1,0 +1,16 @@
+<div {{ attributes.defaults(stimulus_controller('hello-world')) }}>
+    <div class="h-screen flex items-center justify-center">
+        <div class="bg-purple-100 rounded-2xl p-8">
+            <h1 class="text-3xl font-bold mb-8">Symfony Fullstack Starter</h1>
+            <div class="flex items-center justify-center gap-10">
+                <button {{ live_action('decrement') }} class="rounded-full bg-purple-500 text-white font-bold px-4 py-2 cursor-pointer">
+                    Decrement
+                </button>
+                <span class="text-5xl">{{ count }}</span>
+                <button {{ live_action('increment') }} class="rounded-full bg-purple-500 text-white font-bold px-4 py-2 cursor-pointer">
+                    Increment
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

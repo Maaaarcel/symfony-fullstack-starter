@@ -1,0 +1,5 @@
+# Keep yaml, otherwise phpstorm will not pick up component files
+twig_component:
+  anonymous_template_directory: 'templates/anonymous_components/'
+  defaults:
+    Components\: 'templates/components/'

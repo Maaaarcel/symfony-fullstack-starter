@@ -1,0 +1,29 @@
+services:
+  php:
+    build:
+      context: .
+      target: frankenphp_dev
+    volumes:
+      - ./:/app
+      - ./var:/app/var
+      - ./.docker/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./.docker/php/app.dev.ini:/usr/local/etc/php/app.conf.d/app.dev.ini:ro
+    tty: true
+    environment:
+      CADDY_SERVER_LOG_OPTIONS: 'output discard'
+      XDEBUG_MODE: debug
+    ports:
+      - target: 80
+        published: 8001
+        protocol: tcp
+      - target: 443
+        published: 8000
+        protocol: tcp
+      - target: 443
+        published: 8000
+        protocol: udp
+
+  database:
+    ports:
+      - target: 5432
+        published: 5432

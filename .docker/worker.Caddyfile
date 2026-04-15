@@ -1,0 +1,4 @@
+worker {
+    file ./public/index.php
+    {$FRANKENPHP_WORKER_CONFIG}
+}

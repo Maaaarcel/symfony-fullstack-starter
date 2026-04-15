@@ -1,0 +1,11 @@
+parameters:
+  symfony:
+    containerXmlPath: var/cache/dev/App_KernelDevDebugContainer.xml
+  level: 9
+  paths:
+    - bin/
+    - config/
+    - public/
+    - src/
+  scanFiles:
+    - vendor/symfony/dependency-injection/Loader/Configurator/ContainerConfigurator.php
