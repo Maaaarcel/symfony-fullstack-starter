@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Components\HelloWorld;
+namespace App\Components\HelloWorld;
 
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveAction;

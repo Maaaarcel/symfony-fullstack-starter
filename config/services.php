@@ -14,7 +14,7 @@ return App::config([
             'resource' => '../src/',
             'exclude' => '../src/Entity',
         ],
-        'Components\\' => [
+        'App\\Components\\' => [
             'resource' => '../templates/components/',
         ],
     ],
