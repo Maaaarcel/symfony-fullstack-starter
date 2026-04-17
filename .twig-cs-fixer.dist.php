@@ -1,0 +1,19 @@
+<?php
+
+declare(strict_types = 1);
+
+use TwigCsFixer\Config\Config;
+use TwigCsFixer\File\Finder;
+use TwigCsFixer\Ruleset\Ruleset;
+use TwigCsFixer\Standard\Symfony;
+use TwigCsFixer\Standard\TwigCsFixer;
+
+$finder = new Finder()
+    ->in('templates');
+
+$ruleset = new Ruleset()
+    ->addStandard(new TwigCsFixer())
+    ->addStandard(new Symfony());
+
+return new Config()
+    ->setRuleset($ruleset);

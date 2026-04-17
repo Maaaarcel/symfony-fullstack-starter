@@ -21,11 +21,11 @@ final class HelloWorld {
 
     #[LiveAction]
     public function increment(): void {
-        $this->count++;
+        ++$this->count;
     }
 
     #[LiveAction]
     public function decrement(): void {
-        $this->count--;
+        --$this->count;
     }
 }

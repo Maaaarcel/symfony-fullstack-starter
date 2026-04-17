@@ -12,7 +12,7 @@ return Routes::config([
         ],
         '_profiler_vite' => [
             'defaults' => [
-                '_controller' => 'Pentatrion\ViteBundle\Controller\ProfilerController::info'
+                '_controller' => 'Pentatrion\ViteBundle\Controller\ProfilerController::info',
             ],
             'path' => '/_profiler/vite',
         ],

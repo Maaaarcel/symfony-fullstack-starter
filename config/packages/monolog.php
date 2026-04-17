@@ -17,7 +17,7 @@ return App::config([
                     'type' => 'stream',
                     'path' => '%kernel.logs_dir%/%kernel.environment%.log',
                     'level' => 'debug',
-                    'channels' => ["!event"],
+                    'channels' => ['!event'],
                 ],
                 'console' => [
                     'type' => 'console',
@@ -38,7 +38,7 @@ return App::config([
                     'handler' => 'nested',
                     'excluded_http_codes' => [
                         ['code' => 404],
-                        ['code' => 405]
+                        ['code' => 405],
                     ],
                     'channels' => ['!event'],
                 ],
@@ -59,10 +59,10 @@ return App::config([
                     'handler' => 'nested',
                     'excluded_http_codes' => [
                         ['code' => 404],
-                        ['code' => 405]
+                        ['code' => 405],
                     ],
                     'channels' => ['!deprecation'],
-                    'buffer_size' => 50, # How many messages should be saved? Prevent memory leaks
+                    'buffer_size' => 50, // How many messages should be saved? Prevent memory leaks
                 ],
                 'nested' => [
                     'type' => 'stream',
