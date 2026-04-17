@@ -16,6 +16,10 @@ This is an opinionated boilerplate for fullstack Symfony applications.
   by https://hugo.alliau.me/blog/posts/a-better-architecture-for-your-symfony-ux-twig-components)
 - Dev and Prod docker images with FrankenPHP (inspired by https://github.com/dunglas/symfony-docker)
 
+## Setup
+
+You only need to delete the original `.gitignore` and replace it with `.gitignore.project`, then you are ready to go! 
+
 ## Component directory layout
 
 ```
