@@ -44,10 +44,10 @@ ENV PHP_INI_SCAN_DIR=":$PHP_INI_DIR/app.conf.d"
 ###> recipes ###
 ###< recipes ###
 
-COPY --link .docker/php/app.ini $PHP_INI_DIR/app.conf.d/
-COPY --link --chmod=755 .docker/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
-COPY --link .docker/Caddyfile /etc/frankenphp/Caddyfile
-COPY --link .docker/worker.Caddyfile /etc/frankenphp/worker.Caddyfile
+COPY .docker/php/app.ini $PHP_INI_DIR/app.conf.d/
+COPY --chmod=755 .docker/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
+COPY .docker/Caddyfile /etc/frankenphp/Caddyfile
+COPY .docker/worker.Caddyfile /etc/frankenphp/worker.Caddyfile
 
 ENTRYPOINT ["docker-entrypoint"]
 
@@ -66,7 +66,7 @@ RUN <<-EOF
 	install-php-extensions xdebug
 EOF
 
-COPY --link .docker/php/app.dev.ini $PHP_INI_DIR/app.conf.d/
+COPY .docker/php/app.dev.ini $PHP_INI_DIR/app.conf.d/
 
 CMD [ "frankenphp", "run", "--config", "/etc/frankenphp/Caddyfile", "--watch" ]
 
@@ -77,14 +77,14 @@ ENV APP_ENV=prod
 
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
-COPY --link .docker/php/app.prod.ini $PHP_INI_DIR/app.conf.d/
+COPY .docker/php/app.prod.ini $PHP_INI_DIR/app.conf.d/
 
 # prevent the reinstallation of vendors at every changes in the source code
-COPY --link composer.* symfony.* ./
+COPY composer.* symfony.* ./
 RUN composer install --no-cache --prefer-dist --no-dev --no-autoloader --no-scripts --no-progress
 
 # copy sources
-COPY --link --exclude=.docker/ --exclude=package.json --exclude=pnpm-lock.yaml --exclude=tsconfig.json --exclude=vite.config.ts . ./
+COPY --exclude=.docker/ --exclude=package.json --exclude=pnpm-lock.yaml --exclude=tsconfig.json --exclude=vite.config.ts . ./
 
 RUN <<-EOF
 	mkdir -p var/cache var/log var/share
@@ -119,11 +119,11 @@ RUN corepack enable
 
 WORKDIR /build
 
-COPY --link package.json pnpm-lock.yaml ./
-COPY --link vite.config.ts ./
-COPY --link tsconfig.json ./
-COPY --link assets ./assets
-COPY --link templates ./templates
+COPY package.json pnpm-lock.yaml ./
+COPY vite.config.ts ./
+COPY tsconfig.json ./
+COPY assets ./assets
+COPY templates ./templates
 
 RUN pnpm i --frozen-lockfile
 RUN pnpm build
@@ -164,11 +164,11 @@ RUN <<-EOF
 	find / -perm /6000 -type f -exec chmod a-s {} + 2>/dev/null || true
 EOF
 
-COPY --link --exclude=var --from=frankenphp_prod_builder /app /app
+COPY --exclude=var --from=frankenphp_prod_builder /app /app
 COPY --from=node_builder /build/public/build /app/public/build
 COPY --chown=www-data:www-data --from=frankenphp_prod_builder /app/var /app/var
 
-COPY --link --from=frankenphp_prod_builder /usr/local/bin/docker-entrypoint /usr/local/bin/docker-entrypoint
+COPY --from=frankenphp_prod_builder /usr/local/bin/docker-entrypoint /usr/local/bin/docker-entrypoint
 
 VOLUME /app/var/
 
