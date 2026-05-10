@@ -5,7 +5,6 @@ services:
       target: frankenphp_dev
     volumes:
       - ./:/app
-      - ./var:/app/var
       - ./.docker/Caddyfile:/etc/caddy/Caddyfile:ro
       - ./.docker/php/app.dev.ini:/usr/local/etc/php/app.conf.d/app.dev.ini:ro
     tty: true

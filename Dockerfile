@@ -8,15 +8,12 @@ FROM node:24-slim AS node_upstream
 # https://docs.docker.com/build/building/multi-stage/#stop-at-a-specific-build-stage
 # https://docs.docker.com/reference/compose-file/build/#target
 
-
 # Base FrankenPHP image
 FROM frankenphp_upstream AS frankenphp_base
 
 SHELL ["/bin/bash", "-euxo", "pipefail", "-c"]
 
 WORKDIR /app
-
-VOLUME /app/var/
 
 # persistent deps
 # hadolint ignore=DL3008
@@ -91,7 +88,9 @@ RUN <<-EOF
 	composer dump-autoload --classmap-authoritative --no-dev
 	composer dump-env prod
 	composer run-script --no-dev post-install-cmd
-	chmod +x bin/console; sync
+	chmod +x bin/console
+	chmod -R g=u var
+	sync
 EOF
 
 # Collect shared libraries needed by FrankenPHP and PHP extensions
@@ -107,7 +106,6 @@ RUN <<-EOF
 			[ -f "$lib" ] && cp -n "$lib" /tmp/libs/
 		done
 	done
-	sed -i 's/opcache.preload_user = root/opcache.preload_user = www-data/' "$PHP_INI_DIR/app.conf.d/app.prod.ini"
 	rm -rf /var/lib/apt/lists/*
 EOF
 
@@ -152,10 +150,13 @@ COPY --from=frankenphp_prod_builder /etc/frankenphp/worker.Caddyfile /etc/franke
 
 # CA certificates for TLS, file/libmagic for Symfony MIME type detection
 COPY --from=frankenphp_prod_builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+COPY --from=frankenphp_prod_builder /etc/ssl/openssl.cnf /etc/ssl/openssl.cnf
 COPY --from=frankenphp_prod_builder /usr/bin/file /usr/bin/file
 COPY --from=frankenphp_prod_builder /usr/lib/file/magic.mgc /usr/lib/file/magic.mgc
 
-ENV XDG_CONFIG_HOME=/config XDG_DATA_HOME=/data
+ENV XDG_CONFIG_HOME=/config
+ENV XDG_DATA_HOME=/data
+ENV OPENSSL_CONF=/etc/ssl/openssl.cnf
 
 RUN <<-EOF
 	mkdir -p /data/caddy /config/caddy
@@ -166,11 +167,10 @@ EOF
 
 COPY --exclude=var --from=frankenphp_prod_builder /app /app
 COPY --from=node_builder /build/public/build /app/public/build
-COPY --chown=www-data:www-data --from=frankenphp_prod_builder /app/var /app/var
+COPY --chown=www-data:0 --from=frankenphp_prod_builder /app/var /app/var
+RUN chmod g=u /app/var
 
 COPY --from=frankenphp_prod_builder /usr/local/bin/docker-entrypoint /usr/local/bin/docker-entrypoint
-
-VOLUME /app/var/
 
 USER www-data
 
@@ -179,4 +179,5 @@ WORKDIR /app
 ENTRYPOINT ["docker-entrypoint"]
 
 HEALTHCHECK --start-period=60s CMD php -r 'exit(false === @file_get_contents("http://localhost:2019/metrics", context: stream_context_create(["http" => ["timeout" => 5]])) ? 1 : 0);'
+
 CMD [ "frankenphp", "run", "--config", "/etc/frankenphp/Caddyfile" ]
