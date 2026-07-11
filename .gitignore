@@ -9,11 +9,12 @@
 /node_modules/
 /public/build/
 
-phpstan.neon
+/phpstan.neon
 .idea
 
-pnpm-lock.yaml
-composer.lock
+/pnpm-lock.yaml
+/composer.lock
+/config/reference.php
 
 /.php-cs-fixer.php
 /.php-cs-fixer.cache
