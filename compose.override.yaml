@@ -21,6 +21,8 @@ services:
       - target: 443
         published: 8000
         protocol: udp
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
 
   database:
     ports:
