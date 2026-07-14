@@ -117,7 +117,7 @@ RUN corepack enable
 
 WORKDIR /build
 
-COPY package.json pnpm-lock.yaml ./
+COPY package.json pnpm-*.yaml ./
 COPY vite.config.ts ./
 COPY tsconfig.json ./
 COPY assets ./assets
