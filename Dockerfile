@@ -159,6 +159,12 @@ ENV XDG_DATA_HOME=/data
 ENV OPENSSL_CONF=/etc/ssl/openssl.cnf
 
 RUN <<-EOF
+	apt-get update
+	apt-get install -y --no-install-recommends \
+        ca-certificates
+    update-ca-certificates
+	rm -rf /var/lib/apt/lists/*
+
 	mkdir -p /data/caddy /config/caddy
 	chown -R www-data:www-data /data /config
 	# Remove setuid/setgid bits
