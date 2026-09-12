@@ -10,7 +10,7 @@ services:
     tty: true
     environment:
       CADDY_SERVER_LOG_OPTIONS: 'output discard'
-      XDEBUG_MODE: debug
+      XDEBUG_MODE: ${XDEBUG_MODE:-off}
     ports:
       - target: 80
         published: 8001

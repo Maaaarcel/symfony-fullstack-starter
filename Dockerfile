@@ -29,14 +29,26 @@ RUN <<-EOF
 		opcache \
 		zip \
         uuid \
-        pdo_pgsql
-	rm -rf /var/lib/apt/lists/*
+        pdo_pgsql \
+        opentelemetry
 EOF
+
+RUN --mount=type=bind,from=ghcr.io/php/pie:bin,source=/pie,target=/usr/local/bin/pie <<-EOF
+    pie install symfony/deepclone
+EOF
+
+RUN rm -rf /var/lib/apt/lists/*
 
 # https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
 ENV PHP_INI_SCAN_DIR=":$PHP_INI_DIR/app.conf.d"
+
+ENV OTEL_PHP_AUTOLOAD_ENABLED=false
+ENV OTEL_TRACES_EXPORTER=none
+ENV OTEL_METRICS_EXPORTER=none
+ENV OTEL_LOGS_EXPORTER=none
+ENV OTEL_PHP_PSR3_MODE=export
 
 ###> recipes ###
 ###< recipes ###

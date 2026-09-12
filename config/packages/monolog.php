@@ -17,14 +17,18 @@ return App::config([
                     'type' => 'stream',
                     'path' => '%kernel.logs_dir%/%kernel.environment%.log',
                     'level' => 'debug',
-                    'channels' => ['!event'],
+                    'channels' => [
+                        'elements' => ['!event'],
+                    ],
                 ],
                 'console' => [
                     'type' => 'console',
                     'process_psr_3_messages' => [
                         'enabled' => false,
                     ],
-                    'channels' => ['!event', '!doctrine', '!console'],
+                    'channels' => [
+                        'elements' => ['!event', '!doctrine', '!console'],
+                    ],
                 ],
             ],
         ],
@@ -40,7 +44,9 @@ return App::config([
                         ['code' => 404],
                         ['code' => 405],
                     ],
-                    'channels' => ['!event'],
+                    'channels' => [
+                        'elements' => ['!event'],
+                    ],
                 ],
                 'nested' => [
                     'type' => 'stream',
@@ -61,7 +67,9 @@ return App::config([
                         ['code' => 404],
                         ['code' => 405],
                     ],
-                    'channels' => ['!deprecation'],
+                    'channels' => [
+                        'elements' => ['!deprecation'],
+                    ],
                     'buffer_size' => 50, // How many messages should be saved? Prevent memory leaks
                 ],
                 'nested' => [
@@ -75,11 +83,15 @@ return App::config([
                     'process_psr_3_messages' => [
                         'enabled' => false,
                     ],
-                    'channels' => ['!event', '!doctrine'],
+                    'channels' => [
+                        'elements' => ['!event', '!doctrine'],
+                    ],
                 ],
                 'deprecation' => [
                     'type' => 'stream',
-                    'channels' => ['deprecation'],
+                    'channels' => [
+                        'elements' => ['deprecation'],
+                    ],
                     'path' => 'php://stderr',
                     'formatter' => 'monolog.formatter.json',
                 ],
