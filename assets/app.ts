@@ -15,4 +15,8 @@ if (import.meta.hot) {
 
 import.meta.glob([
     './resources/**',
-]);
+], {
+    eager: true,
+    query: '?url',
+    import: 'default',
+});
