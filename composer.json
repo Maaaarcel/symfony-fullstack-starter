@@ -96,12 +96,18 @@
             "@auto-scripts"
         ],
         "lint": [
+            "@putenv OTEL_PHP_DISABLED_INSTRUMENTATIONS=all",
             "php-cs-fixer check",
             "twig-cs-fixer lint"
         ],
         "lint:fix": [
+            "@putenv OTEL_PHP_DISABLED_INSTRUMENTATIONS=all",
             "php-cs-fixer fix",
             "twig-cs-fixer fix"
+        ],
+        "phpstan": [
+            "@putenv OTEL_PHP_DISABLED_INSTRUMENTATIONS=all",
+            "phpstan"
         ]
     },
     "conflict": {
