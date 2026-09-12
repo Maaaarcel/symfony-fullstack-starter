@@ -1,25 +1,28 @@
 import {defineConfig} from 'vite';
-import symfonyPlugin from 'vite-plugin-symfony';
 import tailwindcss from '@tailwindcss/vite';
+import symfony from '@symfony/reprise/vite';
+import {Options} from '@symfony/reprise/types';
 
 export default defineConfig({
     plugins: [
         tailwindcss(),
-        symfonyPlugin({
+        symfony({
             stimulus: {
-                controllersDir: '/'
+                controllersJson: 'assets/controllers.json',
+                controllersDir: './{assets,src}',
             },
-            refresh: true,
-
-        }),
+            copy: [{
+                from: 'assets/resources',
+                to: 'resources',
+            }],
+        } satisfies Options),
     ],
     build: {
-        rollupOptions: {
+        rolldownOptions: {
             input: {
                 app: './assets/app.ts',
                 styles: './assets/app.css',
             },
         },
-        assetsInlineLimit: 0,
     },
 });
