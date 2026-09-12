@@ -9,15 +9,27 @@
         "ext-iconv": "*",
         "ext-intl": "*",
         "ext-mbstring": "*",
+        "ext-opentelemetry": "*",
         "doctrine/doctrine-bundle": "^3.2.2",
         "doctrine/doctrine-migrations-bundle": "^4.0",
         "doctrine/orm": "^3.6.3",
+        "nyholm/psr7": "^1.8",
+        "open-telemetry/exporter-otlp": "^1.4",
+        "open-telemetry/opentelemetry-auto-doctrine": "^0.5",
+        "open-telemetry/opentelemetry-auto-pdo": "^0.5",
+        "open-telemetry/opentelemetry-auto-psr3": "^0.3.0",
+        "open-telemetry/opentelemetry-auto-psr6": "^0.0.7",
+        "open-telemetry/opentelemetry-auto-psr14": "^0.0.7",
+        "open-telemetry/opentelemetry-auto-psr16": "^0.0.7",
+        "open-telemetry/opentelemetry-auto-symfony": "^1.4",
+        "open-telemetry/sdk": "^1.15",
         "pentatrion/vite-bundle": "^8.2.4",
         "symfony/asset": "8.1.*",
         "symfony/console": "8.1.*",
         "symfony/dotenv": "8.1.*",
         "symfony/flex": "^2.10",
         "symfony/framework-bundle": "8.1.*",
+        "symfony/http-client": "8.1.*",
         "symfony/monolog-bundle": "^4.0.2",
         "symfony/runtime": "8.1.*",
         "symfony/translation": "8.1.*",
@@ -37,7 +49,8 @@
             "php-http/discovery": true,
             "phpstan/extension-installer": true,
             "symfony/flex": true,
-            "symfony/runtime": true
+            "symfony/runtime": true,
+            "tbachert/spi": true
         },
         "bump-after-update": true,
         "sort-packages": true
@@ -67,7 +80,9 @@
         "symfony/polyfill-php85": "*",
         "symfony/polyfill-mbstring": "*",
         "symfony/polyfill-intl-grapheme": "*",
-        "symfony/polyfill-intl-normalizer": "*"
+        "symfony/polyfill-intl-normalizer": "*",
+        "symfony/polyfill-deepclone": "*",
+        "symfony/polyfill-intl-idn": "*"
     },
     "scripts": {
         "auto-scripts": {
