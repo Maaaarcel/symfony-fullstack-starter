@@ -10,6 +10,7 @@
         "ext-intl": "*",
         "ext-mbstring": "*",
         "ext-opentelemetry": "*",
+        "ext-grpc": "*",
         "doctrine/doctrine-bundle": "^3.2.2",
         "doctrine/doctrine-migrations-bundle": "^4.0",
         "doctrine/orm": "^3.6.3",
@@ -23,6 +24,7 @@
         "open-telemetry/opentelemetry-auto-psr16": "^0.0.7",
         "open-telemetry/opentelemetry-auto-symfony": "^1.4",
         "open-telemetry/sdk": "^1.15",
+        "open-telemetry/transport-grpc": "^1.2",
         "pentatrion/vite-bundle": "^8.2.4",
         "symfony/asset": "8.1.*",
         "symfony/console": "8.1.*",
@@ -30,7 +32,7 @@
         "symfony/flex": "^2.10",
         "symfony/framework-bundle": "8.1.*",
         "symfony/http-client": "8.1.*",
-        "symfony/monolog-bundle": "^4.0.2",
+        "symfony/monolog-bundle": "^4.1.0",
         "symfony/runtime": "8.1.*",
         "symfony/translation": "8.1.*",
         "symfony/twig-bundle": "8.1.*",
@@ -67,6 +69,7 @@
         }
     },
     "replace": {
+        "grpc/grpc": "*",
         "symfony/polyfill-ctype": "*",
         "symfony/polyfill-iconv": "*",
         "symfony/polyfill-php72": "*",
@@ -126,11 +129,11 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "*",
         "phpstan/extension-installer": "^1.4.3",
-        "phpstan/phpstan": "^2.1.47",
+        "phpstan/phpstan": "^2.2.14",
         "phpstan/phpstan-doctrine": "^2.0.20",
         "phpstan/phpstan-symfony": "^2.0.15",
         "symfony/debug-bundle": "8.1.*",
-        "symfony/maker-bundle": "^1.67",
+        "symfony/maker-bundle": "^1.68",
         "symfony/stopwatch": "8.1.*",
         "symfony/web-profiler-bundle": "8.1.*",
         "vincentlanglet/twig-cs-fixer": "*"
