@@ -15,6 +15,7 @@ This is an opinionated boilerplate for fullstack Symfony applications.
 - Twig Components with improved directory layout (inspired
   by https://hugo.alliau.me/blog/posts/a-better-architecture-for-your-symfony-ux-twig-components)
 - Dev and Prod docker images with FrankenPHP (inspired by https://github.com/dunglas/symfony-docker)
+- OpenTelemetry auto instrumentation
 
 ## Setup
 

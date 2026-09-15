@@ -30,7 +30,8 @@ RUN <<-EOF
 		zip \
         uuid \
         pdo_pgsql \
-        opentelemetry
+        opentelemetry \
+        grpc
 EOF
 
 RUN --mount=type=bind,from=ghcr.io/php/pie:bin,source=/pie,target=/usr/local/bin/pie <<-EOF
@@ -45,10 +46,14 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV PHP_INI_SCAN_DIR=":$PHP_INI_DIR/app.conf.d"
 
 ENV OTEL_PHP_AUTOLOAD_ENABLED=false
+ENV OTEL_PHP_DISABLED_INSTRUMENTATIONS=""
 ENV OTEL_TRACES_EXPORTER=none
 ENV OTEL_METRICS_EXPORTER=none
 ENV OTEL_LOGS_EXPORTER=none
 ENV OTEL_PHP_PSR3_MODE=export
+ENV OTEL_EXPORTER_OTLP_ENDPOINT=""
+ENV OTEL_EXPORTER_OTLP_PROTOCOL=grpc
+ENV OTEL_METRIC_EXPORT_INTERVAL=""
 
 ###> recipes ###
 ###< recipes ###
