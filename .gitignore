@@ -20,3 +20,4 @@
 /.php-cs-fixer.cache
 
 /.twig-cs-fixer.cache
+/symfony.lock
