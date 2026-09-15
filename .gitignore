@@ -20,8 +20,3 @@
 /.php-cs-fixer.cache
 
 /.twig-cs-fixer.cache
-
-###> symfony/reprise ###
-/node_modules/
-/public/build/
-###< symfony/reprise ###
