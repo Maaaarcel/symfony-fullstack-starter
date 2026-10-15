@@ -9,12 +9,12 @@
         "@hotwired/stimulus": "^3.2.2",
         "@hotwired/turbo": "^8.0.23",
         "@symfony/stimulus-bridge": "^4.0.1",
-        "@symfony/ux-live-component": "^3.2.0",
+        "@symfony/ux-live-component": "^3.6.0",
         "@symfony/ux-turbo": "^2.36.2",
         "@tailwindcss/vite": "^4.3.3",
         "tailwindcss": "^4.3.3",
         "typescript": "^7.0.2",
-        "vite": "^8.3.0",
+        "vite": "^8.3.4",
         "vite-plugin-symfony": "^8.2.4"
     }
 }

@@ -237,6 +237,9 @@
             "config/packages/ux_icons.yaml"
         ]
     },
+    "symfony/ux-inspector": {
+        "version": "v3.6.0"
+    },
     "symfony/ux-live-component": {
         "version": "3.0",
         "recipe": {

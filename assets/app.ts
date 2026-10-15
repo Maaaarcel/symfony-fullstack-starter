@@ -9,8 +9,14 @@ registerControllers(
     }),
 );
 
+// symfony-vite setup
 if (import.meta.hot) {
     window.$$stimulusApp$$ = app;
+}
+
+// ux-inspector setup
+if (app.debug) {
+    window.Stimulus = app;
 }
 
 import.meta.glob([
