@@ -23,3 +23,5 @@ for (const module of Object.values(componentControllers)) {
 const application = Application.start();
 application.debug = isApplicationDebug;
 loadControllers(application, eagerControllers, lazyControllers);
+
+export {application};
