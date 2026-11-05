@@ -16,4 +16,5 @@ $ruleset = new Ruleset()
     ->addStandard(new Symfony());
 
 return new Config()
+    ->setFinder($finder)
     ->setRuleset($ruleset);

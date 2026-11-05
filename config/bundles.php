@@ -17,4 +17,5 @@ return [
     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
     Symfony\UX\Icons\UXIconsBundle::class => ['all' => true],
     Symfony\Reprise\RepriseBundle::class => ['all' => true],
+    Symfony\UX\Inspector\UXInspectorBundle::class => ['dev' => true, 'test' => true],
 ];
