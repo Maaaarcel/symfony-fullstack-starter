@@ -9,7 +9,8 @@
       "DOM.Iterable"
     ],
     "types": [
-      "vite/client"
+      "vite/client",
+      "vite-plugin-symfony/stimulus/env"
     ],
     "skipLibCheck": true,
     /* Bundler mode */
@@ -26,6 +27,8 @@
     "noUncheckedSideEffectImports": true
   },
   "include": [
-    "assets"
+    "assets",
+    "templates/components",
+    "templates/anonymous_components"
   ]
 }
