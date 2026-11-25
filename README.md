@@ -27,7 +27,7 @@ You only need to delete the original `.gitignore` and replace it with `.gitignor
 templates
 └── components
     └── HelloWorld
-        ├── HelloWorld.controller.ts -> stimulus controller for the component
+        ├── main-controller.ts -> stimulus controller for the component
         ├── HelloWorld.html.twig -> twig template of the component
         └── HelloWorld.php -> PHP class for the component. Required to set the parameters in the AsTwigComponent attribute
 ```
