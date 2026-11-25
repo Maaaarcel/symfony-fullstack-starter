@@ -6,7 +6,13 @@ export default defineConfig({
     plugins: [
         tailwindcss(),
         symfony({
-            stimulus: 'assets/controllers.json',
+            stimulus: {
+                controllersJson: 'assets/controllers.json',
+                controllersDirs: {
+                    '': 'templates/components',
+                    'global': 'assets/controllers'
+                }
+            },
             copy: [{
                 from: 'assets/resources',
                 to: 'resources',

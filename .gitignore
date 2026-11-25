@@ -6,9 +6,6 @@
 /var/
 /vendor/
 
-/node_modules/
-/public/build/
-
 /phpstan.neon
 .idea
 
@@ -21,3 +18,8 @@
 
 /.twig-cs-fixer.cache
 /symfony.lock
+
+###> symfony/reprise ###
+/node_modules/
+/public/build/
+###< symfony/reprise ###
